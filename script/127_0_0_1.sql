@@ -34,7 +34,7 @@ CREATE TABLE `libros` (
   `nombre` varchar(30) NOT NULL,
   `autor` varchar(30) NOT NULL,
   `categoria` varchar(30) NOT NULL,
-  `año-publicacion` date NOT NULL,
+  `anio_publicacion` date NOT NULL,
   `ISBN` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -42,7 +42,7 @@ CREATE TABLE `libros` (
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `año-publicacion`, `ISBN`) VALUES
+INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `anio_publicacion`, `ISBN`) VALUES
 (1, 'Harry Potter', 'J K Rowling', 'Fantasia', '2001-10-10', '81234567891'),
 (2, 'Juegos del Hambre', 'Suzanne Collins', 'Ciencia Ficcion', '2008-11-13', '886500123234'),
 (3, 'It', 'Stephen King', 'Terror', '1986-04-17', '812333178910'),
