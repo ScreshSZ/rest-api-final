@@ -13,6 +13,12 @@ class LibrosController{
         res.json(result);
     }
 
+    async add(req, res){
+        const libro = req.body;
+        const [result] = await pool.query(`INSERT INTO libros(nombre, autor, categoria, anio_publicacion, ISBN) VALUES (?, ?, ?, ?, ?)`, [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.ISBN]);
+        res.json({"Id Insertado": result.insertId});
+    }
+
 }
 
 export const libro = new LibrosController();
