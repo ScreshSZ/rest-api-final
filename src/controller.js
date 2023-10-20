@@ -2,6 +2,7 @@ import { pool } from './database.js';
 
 class LibrosController{
 
+    //Funcionalidad para mostrar todos los libros en la base de datos
     async getAll(req, res){
         try{
         const [result] = await pool.query('SELECT * FROM libros');
@@ -12,6 +13,7 @@ class LibrosController{
         
     }
 
+    //Funcionalidad para obtener un libro de acuerdo al ID
     async getOne(req,res){
         try{
             const libro = req.body;
@@ -23,6 +25,7 @@ class LibrosController{
         
     }
 
+    //Funcionalidad para ingresar un libro con sus distintos datos
     async add(req, res){
         try{
             const libro = req.body;
@@ -34,6 +37,7 @@ class LibrosController{
         
     }
 
+    //Funcionalidad para editar/actualizar los datos de un libro ya existente
     async update(req, res){
         try{
             const libro = req.body;
@@ -45,6 +49,7 @@ class LibrosController{
         
     }
 
+    //Funcionalidad para eliminar un libro de acuerdo a su ISBN
     async delete(req, res){
         try{
         const libro = req.body;
