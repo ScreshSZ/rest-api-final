@@ -19,6 +19,18 @@ class LibrosController{
         res.json({"Id Insertado": result.insertId});
     }
 
+    async update(req, res){
+        const libro = req.body;
+        const [result] = await pool.query(`UPDATE libros SET nombre=(?), autor=(?), categoria=(?), anio_publicacion=(?), ISBN=(?) WHERE id=(?)`, [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.ISBN, libro.id]);
+        res.json("Se actualizo el libro");
+    }
+
+    async delete(req, res){
+        const libro = req.body;
+        const [result] = await pool.query(`DELETE FROM libros WHERE ISBN=(?)`, [libro.ISBN]);
+        res.json("Se elimino el libro");
+    }
+
 }
 
 export const libro = new LibrosController();
