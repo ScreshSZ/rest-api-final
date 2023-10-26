@@ -18,7 +18,11 @@ class LibrosController{
         try{
             const libro = req.body;
         const [result]  = await pool.query(`SELECT * FROM libros WHERE id=(?)`, [libro.id]);
-        res.json(result);
+        if(result.length > 0){
+            res.json(result);
+        }else{
+            res.json({"Mensaje": "No se Encontro resultado"})
+        }
         }catch(error){
             res.status(500).json({"Error": "Ocurrio un error al obtener el libro"});
         }
