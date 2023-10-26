@@ -8,7 +8,7 @@ class LibrosController{
         const [result] = await pool.query('SELECT * FROM libros');
         res.json(result);
         }catch(error){
-            console.log(error);
+            res.status(500).json({"Error": "Ocurrio un error al obtener los libros"});
         }
         
     }
@@ -20,7 +20,7 @@ class LibrosController{
         const [result]  = await pool.query(`SELECT * FROM libros WHERE id=(?)`, [libro.id]);
         res.json(result);
         }catch(error){
-            console.log(error);
+            res.status(500).json({"Error": "Ocurrio un error al obtener el libro"});
         }
         
     }
@@ -32,7 +32,7 @@ class LibrosController{
         const [result] = await pool.query(`INSERT INTO libros(nombre, autor, categoria, anio_publicacion, ISBN) VALUES (?, ?, ?, ?, ?)`, [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.ISBN]);
         res.json({"Id Insertado": result.insertId});
         }catch(error){
-            console.log(error);
+            res.status(500).json({"Error": "Ocurrio un error al añadir un libro"});
         }
         
     }
@@ -44,7 +44,7 @@ class LibrosController{
         const [result] = await pool.query(`UPDATE libros SET nombre=(?), autor=(?), categoria=(?), anio_publicacion=(?), ISBN=(?) WHERE id=(?)`, [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.ISBN, libro.id]);
         res.json("Se actualizo el libro");
         }catch(error){
-            console.log(error);
+            res.status(500).json({"Error": "Ocurrio un error al actualizar un libro"});
         }
         
     }
@@ -56,7 +56,7 @@ class LibrosController{
         const [result] = await pool.query(`DELETE FROM libros WHERE ISBN=(?)`, [libro.ISBN]);
         res.json("Se elimino el libro");
         }catch(error){
-            console.log(error)
+            res.status(500).json({"Error": "Ocurrio un error al intentar eliminar un libro"});
         }
         
     }
